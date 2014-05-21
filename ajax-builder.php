@@ -1,0 +1,6 @@
+<!-- add slide default -->
+
+<div id="addslide" style="width:640px; display:none;"><h2>Add Slide to Gallery</h2><h3 id="gallery-title">'+galleryTitle+'</h3><div id="addslide-topcontent"><form><input type="hidden" name="addSlide" value="y" /><input type="hidden" name="gallery-id" id="gallery-id" value="'+galleryID+'" /><p><label>Embed Code</label><textarea class="codeholder" name="code"></textarea></p><p><label>Description Text</label><textarea class="codeholder" name="description"></textarea></p><p><label></label><input type="button" class="button" name="slide-submit" id="slide-submit" value="Add Slide" /></p></form></div><div id="addslide-bottomcontent"></div></div>
+
+<!-- add gallery default -->
+<div id="addgallery" style="width:640px; display:none;"><h2>Add Slide to Gallery</h2><h3>' . $gallery['title'] . '</h3><form action="" method="post" id="theForm"><input type="hidden" name="addGallery" value="y" /><p><label>Title</label><input type="text" class="required" name="title" value="" /></p><p><label>Description Text</label><textarea class="codeholder" name="description"></textarea></p><p><label></label><input type="submit" class="button" name="submit" value="Create Gallery" /></p></form></div>
