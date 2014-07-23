@@ -17,7 +17,7 @@ Server Requirements:
 
 Installation Instructions
 - 1. Create a database on your MYSQL Server
-- 2. Run -cc_embeddable_galleries.sql- in your MYSQL client to create tables
+- 2. Run -setup/cc_embeddable_galleries.sql- in your MYSQL client to create tables
 - 3. Create at least 1 user in the -- cc_embeddable_galleries_users_admin -- table
 - 4. In the -lib/config.inc.php- you need to do 2 things.
 	- Set up database connection credentials and filepath constants in -lib/config.inc.php- file and comment out local settings
