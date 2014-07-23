@@ -4,7 +4,7 @@ traviswachendorf@clearchannel.com
 
 * This app will be programmed in PHP 4.4.9 *
 
-* Live version: http://www.knixcountry.com/common/gallery/ *
+* Live version: http://www.knixcountry.com/common/gallery/?national-hot-dog-day- *
 
 App to display embeddable galleries on CC websites (Instagram, Twitter, Vine)
 
