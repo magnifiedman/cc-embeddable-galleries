@@ -7,13 +7,21 @@ require_once(ROOT_PATH . 'lib/classes/gallery.class.php');
 
 $x=rand(1,9999);
 
-foreach($_GET as $key=>$value){ $urlCode = $key; }
+$url = array();
+foreach($_GET as $key=>$value){
+	$url[] = $key;
+}
+$urlCode = $url[0];
 
 $g = new Gallery($urlCode);
 
 
 // get gallery details
 $gallery = $g->getGallery();
+
+if($gallery['thumb_url']==''){ $gallery['thumb_url'] = 'http://www.1047kissfm.com/cc-common/gallery/thumb.php?src=/export/home/cc-common/mlib/1096/05/1096_1401292437.jpg'; }
+
+$fbShare = $g->fbShare(urlencode($gallery['title']), $urlCode, $gallery['thumb_url']);
 
 
 // get slides in gallery
@@ -35,7 +43,7 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 
 	//set variables for og tags and other meta data
 	$page_title = $gallery['title'];
-	$page_description = "Gallery - " . $gallery['title'];
+	$page_description = $gallery['title'];
 	$keywords = "gallery,instagram,vine,twitter";
 	$url = "http://" . $_SERVER["HTTP_HOST"] .$PHP_SELF; // do not modify this line
 
@@ -49,7 +57,6 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css?x=<?php echo $x; ?>">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/font-awesome.min.css?x=<?php echo $x; ?>">
 
-
 	<div class="pageContainer">
 
 		<!--Start Left Column-->
@@ -60,7 +67,8 @@ if($_SERVER['HTTP_HOST']=='localhost'){
     	<h2><?php echo $gallery['title']; ?></h2>
     	<p><?php echo $gallery['description']; ?></p>
     	<h4>
-    		<a href="http://www.facebook.com/sharer.php?u=http://<?php echo $_SERVER['HTTP_HOST']; ?>/common/gallery/?<?php echo $gallery['url_code']; ?>" target="_blank"><i class="fa fa-facebook-square"></i> Share on Facebook</a>
+    		<?php echo $fbShare; ?>
+    		<!-- <a href="http://www.facebook.com/sharer.php?u=http://<?php echo $_SERVER['HTTP_HOST']; ?>/common/gallery/?<?php echo $gallery['url_code']; ?>" target="_blank"><i class="fa fa-facebook-square"></i> Share on Facebook</a> -->
     		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://twitter.com/share?text=Check out this sweet gallery I found:%20<?php echo $gallery['title']; ?>&url=http://<?php echo $_SERVER['HTTP_HOST']; ?>/common/gallery/?<?php echo $gallery['url_code']; ?>" target="_blank"><i class="fa fa-twitter-square"></i> Share on Twitter</a>
     	</h4>
 
@@ -165,7 +173,7 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 				if(alt){ alt = ''; }
 		        else { alt = '-alt'; }
 
-		        viewframe.location.href='view'+alt+'.php';
+		        viewframe.location.href='view'+alt+'.php?g=<?php echo $urlCode; ?>';
 		        if(adRatio===1) { adframe.location.href='ad.php?1'; }
 		        
 		        adRatio = adRatio+1;
@@ -178,7 +186,7 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 		        if(alt){ alt = ''; }
 		        else { alt = '-alt'; }
 
-		        viewframe.location.href='view'+alt+'.php';
+		        viewframe.location.href='view'+alt+'.php?g=<?php echo $urlCode; ?>';
 		        if(adRatio===1) { adframe.location.href='ad.php?2'; }
 		        
 		        adRatio = adRatio+1;

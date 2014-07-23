@@ -64,6 +64,7 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 				<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
 				<p><label>Gallery Title</label><input type="text" name="title" class="required" value="<?php echo $gallery['title']; ?>"></p>
 				<p><label>Gallery Description</label><textarea name="description" class="codeholder"><?php echo $gallery['description']; ?></textarea></p>
+				<p><label>Thumb URL</label><input type="text" name="thumb_url" class="" value="<?php echo $gallery['thumb_url']; ?>"></p>
 				<p><input type="submit" class="button" value="Update Gallery Details" /></p>
 			</form>
 			<p>&nbsp;</p>

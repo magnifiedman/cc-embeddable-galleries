@@ -59,6 +59,7 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 				<input type="hidden" name="addGallery" value="y" />
 				<p><label>Gallery Title</label><input type="text" name="title" class="required" /></p>
 				<p><label>Gallery Description</label><textarea name="description" class="codeholder required"></textarea></p>
+				<p><label>Thumb URL</label><input type="text" name="thumb_url" class=""/></p>
 				<p><input type="submit" class="button" value="Add Gallery" /></p>
 			</form>
 			<p>&nbsp;</p>

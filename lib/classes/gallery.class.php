@@ -239,6 +239,22 @@ class Gallery {
 	}
 
 
+	 /**
+     * Gets gallery details from urlCode
+     * @return array
+     */
+	function getGalleryDetails($id){
+		$q = sprintf("SELECT *
+			FROM " . GALLERIES_TABLE . "
+			WHERE id = '%s'",
+			mysql_real_escape_string($id)
+			);
+
+		$r = mysql_query($q);
+		return mysql_fetch_assoc($r);
+	}
+
+
 	/**
 	 * Insert a gallery into system
 	 * @param array $vars
@@ -248,9 +264,9 @@ class Gallery {
 		$url_code = $this->urlCode($_POST['title']);
 		$r = mysql_query("
 			INSERT into " . GALLERIES_TABLE . "
-			(date_entered, title, description, url_code)
+			(date_entered, title, description, thumb_url, url_code)
 			VALUES
-			(NOW(),'" . trim($vars['title']) . "', '" . trim($vars['description']) . "', '" . $url_code . "')
+			(NOW(),'" . trim($vars['title']) . "', '" . trim($vars['description']) . "', '" . trim($vars['thumb_url']) . "', '" . $url_code . "')
 			");
 		return true;
 	}
@@ -267,6 +283,7 @@ class Gallery {
 			UPDATE " . GALLERIES_TABLE . "
 			SET title = '" . trim($vars['title']) . "',
 			description = '" . trim($vars['description']) . "',
+			thumb_url = '" . trim($vars['thumb_url']) . "',
 			url_code = '" . $url_code. "'
 			WHERE id='" . $vars['id'] ."'
 			");
@@ -341,6 +358,11 @@ class Gallery {
 		else {
 			return false;
 		}
+	}
+
+	function fbShare($galleryTitle, $urlCode, $thumbImg){
+		$html =  '<a class="fright" href="https://www.facebook.com/dialog/feed?app_id=' . FB_APP_ID . '&link=http://'. $_SERVER['HTTP_HOST'] . '/common/gallery/?' . $urlCode . '&picture=' . $thumbImg . '&name='.$galleryTitle .'.&caption=Check+out+this+gallery+on+' . $_SERVER['HTTP_HOST'] . '&description=View+Now&redirect_uri=http://'. $_SERVER['HTTP_HOST'] . '/common/gallery/?' . $urlCode . '" target="_blank"><i class="fa fa-facebook-square"></i> Share on Facebook</a></span>';
+	    return $html;			
 	}
 
 }

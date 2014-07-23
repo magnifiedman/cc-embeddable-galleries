@@ -5,7 +5,7 @@
 <title>Untitled Document</title>
 </head>
 
-<body style="background-color:red;">
+<body>
 <?php include_once("/export/home/cc-common/wss/wss_include.html"); ?>
 
 	<script type="text/javascript" src="/cc-common/wss/hbx.js"></script>
