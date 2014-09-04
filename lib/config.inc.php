@@ -22,10 +22,10 @@
 
 
 	// database connection - production
-		define('DB_HOST','ccomr-common-user.ccrd.clearchannel.com');
-		define('DB_USER','phoenix');
-		define('DB_PASS','q(xTB5l3');
-		define('DB_NAME','phoenix_projects');
+		define('DB_HOST','');
+		define('DB_USER','');
+		define('DB_PASS','');
+		define('DB_NAME','');
 
 
 	// database tables
