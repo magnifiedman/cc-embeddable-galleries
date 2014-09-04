@@ -52,6 +52,15 @@ if($_SERVER['HTTP_HOST']=='localhost'){
 }
 ?>
 
+<SCRIPT language="JavaScript">
+<!--
+if (screen.width<=480)
+{
+ window.location="index-mobile.php?<?php echo $urlCode; ?>";
+}
+//-->
+</SCRIPT>
+
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/jquery.fancybox.css?x=<?php echo $x; ?>">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/flexslider.css?x=<?php echo $x; ?>">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css?x=<?php echo $x; ?>">
